@@ -109,22 +109,12 @@ namespace Game {
 		info.setEndToken(']');
 		info.setCommandSize(commandSize(command));
 		info.setRet(new std::string[info.getCommandSize()]);
-		/*info.obligatoryEndIndex = 0;
-		info.command = command;
-		info.startIndex = 0;
-		info.startToken = '[';
-		info.endToken=']';
-		info.commandSize=commandSize(command);
-		info.ret = new std::string[info.commandSize];*/
 		int commandLength = command.length();
 		int	k = command.find_last_of(']', commandLength);
 		info = subPhraser(info);
 		info.setStartIndex(k);
 		info.setStartToken('<');
 		info.setEndToken('>');
-		/*info.startIndex=k;
-		info.startToken='<';
-		info.endToken = '>';*/
 		info = subPhraser(info);
 		std::string* ret = info.getACopyOfret();
 		for (int i = 0; i < commandSize(command); i++) {
@@ -151,7 +141,6 @@ namespace Game {
 			vanToken = (i != -1) && (j != -1);
 		}
 		info.setObligatoryEndIndex(db);
-		//info.obligatoryEndIndex=db;
 		return info;
 	}
 

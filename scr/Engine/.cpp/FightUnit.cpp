@@ -40,20 +40,6 @@ namespace Game {
 		anotherTable->setPlayer(player);
 
 	}
-
-	/*void FightUnit::createEnemiesVector(std::map<Enemy*, int> enemiesByName)
-	{
-		typedef std::map<Enemy*, int>::iterator It;
-		int cumulate = 0;
-		for (It it = enemiesByName.begin(); it != enemiesByName.end(); ++it)
-		{
-			for (int i = 0; i < it->second; i++)
-			{
-				enemies.push_back(new Enemy(it->first));
-			}
-		}
-	}*/
-
 	void FightUnit::localGame()
 	{
 		readTheSection();
@@ -163,20 +149,6 @@ namespace Game {
 	{
 		anotherTable->reciveData(data);
 	}
-	/*void FightUnit::readTheSection()
-	{
-		std::ifstream in(path);
-		std::string line = "";
-		if (in.is_open()) {
-			do
-			{
-				std::getline(in, line);
-				std::cout << line << std::endl;
-			} while (!in.eof());
-			in.close();
-		}
-	}*/
-
 	int FightUnit::getWhichUnit()
 	{
 		return whichunit;

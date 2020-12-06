@@ -30,12 +30,6 @@ namespace Game {
 
 		void printTable();
 		~Table();
-		/*Action functions*/
-
-
-		/*Deprecated*/
-		//void initializeAllFightersPositionOnTable();
-		//void initializeOneFighterPositionOnTable(Character*ch);
 	private:
 		int height;
 		int width;

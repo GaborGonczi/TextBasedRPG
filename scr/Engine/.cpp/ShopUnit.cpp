@@ -42,20 +42,6 @@ namespace Game {
 		return player;
 	}
 
-	/*void ShopUnit::readTheSection()
-	{
-		std::ifstream in(path);
-		std::string line = "";
-		if (in.is_open()) {
-			do
-			{
-				std::getline(in, line);
-				std::cout << line << std::endl;
-			} while (!in.eof());
-			in.close();
-		}
-	}*/
-
 	Item * ShopUnit::getAnItemFromShop(int index)
 	{
 		Item* tmp = items.at(index - 1);

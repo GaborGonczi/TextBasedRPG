@@ -9,7 +9,6 @@ namespace Game {
 		Armor();
 		Armor(std::string name, int radiusOfStepBuff = 0, int defBuff = 0);
 		Armor(const Armor*other);
-		//Armor&operator=(const Armor other);
 		/*Destructor*/
 		~Armor();
 		/*Setters*/
