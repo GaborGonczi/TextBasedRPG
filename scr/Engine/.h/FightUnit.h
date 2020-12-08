@@ -30,6 +30,7 @@ namespace Game {
 		void localGame();
 		PlayerCharacter* playerExit();
 		void sendData(DataStructure*data);
+		void print();
 
 	private:
 		PlayerCharacter*player;

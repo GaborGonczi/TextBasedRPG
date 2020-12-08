@@ -32,6 +32,7 @@ namespace Game {
 		int getWhichUnit();
 		/*Initializer Functions*/
 		/*Printer Functions*/
+		void print();
 		void printFoundItems();
 		/*State modifier Functions*/
 		void playerChoiceItems();

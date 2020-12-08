@@ -14,13 +14,12 @@ namespace Game {
 		/*Destructor*/
 		~PlayerCharacter();
 		/*Setters*/
-		void setWherenext(int newwherenext);
+
 		/*Getters*/
-		int getWhereNext();
+
 		/*Overrided Finctions*/
 		int getInWhichUnit();
 	private:
-		int whereNext;
 	};
 }
 #endif // !PLAYER_CHARACTER_H

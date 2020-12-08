@@ -149,6 +149,22 @@ namespace Game {
 	{
 		anotherTable->reciveData(data);
 	}
+
+	void FightUnit::print()
+	{
+		std::cout << this->whichunit << '\n';
+		std::cout << this->path << '\n';
+		for (int i : whereAbleToNext) {
+			std::cout << i << '\n';
+		}
+		std::cout << this->height << '\n';
+		std::cout << this->width << '\n';
+		this->anotherTable->printTable();
+		printCharactersState();
+	
+  }
+
+
 	int FightUnit::getWhichUnit()
 	{
 		return whichunit;
@@ -175,13 +191,17 @@ namespace Game {
 		std::cout << std::setfill('-') << std::setw(160);
 		std::cout << '-' << std::endl;
 		std::cout << "Jatekos: " << std::endl;
-		if (player->isAlive()) {
-			std::cout << player->toStringCharacterStatus() << std::endl;
+		if (player != nullptr) {
+			if (player->isAlive()) {
+				std::cout << player->toStringCharacterStatus() << std::endl;
+			}
 		}
 		std::cout << "Ellenfelek: " << std::endl;
-		for (Enemy*e : enemies) {
-			if (e->isAlive()) {
-				std::cout << e->toStringCharacterStatus() << std::endl;
+		if (!enemies.empty()) {
+			for (Enemy*e : enemies) {
+				if (e->isAlive()) {
+					std::cout << e->toStringCharacterStatus() << std::endl;
+				}
 			}
 		}
 		std::cout << std::setfill('-') << std::setw(161);

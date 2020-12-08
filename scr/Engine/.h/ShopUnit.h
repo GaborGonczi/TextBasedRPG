@@ -18,7 +18,7 @@ namespace Game {
 		void playerEntry(PlayerCharacter*p);
 		void localGame();
 		PlayerCharacter* playerExit();
-
+		void print();
 	private:
 		PlayerCharacter*player;
 		ShopKeeper* owner;

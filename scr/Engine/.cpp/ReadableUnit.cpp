@@ -52,6 +52,16 @@ namespace Game {
 		return whichunit;
 	}
 
+	void ReadableUnit::print()
+	{
+		std::cout << this->whichunit << '\n';
+		this->printFoundItems();
+		std::cout<<this->path<<'\n';
+		for (int i : whereAbleToNext) {
+			std::cout << i << '\n';
+		}
+	}
+
 	void ReadableUnit::printFoundItems()
 	{
 		for (Item*i : foundItems)

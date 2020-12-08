@@ -48,6 +48,26 @@ namespace Game {
 		units.push_back(added);
 	}
 
+	void Game::print()
+	{
+		for (GameUnit*g:units)
+		{
+			if (dynamic_cast<ReadableUnit*>(g) != nullptr) {
+				g->print();
+			}
+			else if (dynamic_cast<ShopUnit*>(g) != nullptr) {
+				g->print();
+			}
+			else if (dynamic_cast<FightUnit*>(g) != nullptr) {
+				g->print();
+			}
+			else
+			{
+				std::cout << "Hiba\n";
+			}
+		}
+	}
+
 	Game::~Game()
 	{
 		for (GameUnit*g:units)

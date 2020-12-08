@@ -18,6 +18,7 @@ namespace Game {
 		virtual void playerEntry(PlayerCharacter*p) = 0;
 		virtual PlayerCharacter* playerExit() = 0;
 		virtual void localGame() = 0;
+		virtual void print() = 0;
 	protected:
 		int whichunit;
 		std::string path;
