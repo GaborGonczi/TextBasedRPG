@@ -42,6 +42,19 @@ namespace Game {
 		return player;
 	}
 
+	void ShopUnit::print()
+	{
+		std::cout << this->whichunit << '\n';
+		std::cout << this->path << '\n';
+		for (int i : whereAbleToNext) {
+			std::cout << i << '\n';
+		}
+		this->printItemsFromShop();
+		std::cout<<this->owner->toStringCharacterStatus()<<'\n';
+	
+		
+	}
+
 	/*void ShopUnit::readTheSection()
 	{
 		std::ifstream in(path);

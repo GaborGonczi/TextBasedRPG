@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "Enemy.h"
+#include "ShopKeeper.h"
+#include "Item.h"
 namespace Game {
 	struct InformationAboutNextUnit
 	{
@@ -14,6 +17,30 @@ namespace Game {
 
 		}
 
+	};
+	struct InformationAboutReadableUnit :public InformationAboutNextUnit {
+
+		std::map<Item*, int>itemsAndItsCount;
+		~InformationAboutReadableUnit()
+		{
+			for (std::map<Item*, int>::iterator it = itemsAndItsCount.begin(); it != itemsAndItsCount.end(); ++it)
+			{
+				delete it->first;
+			}
+		}
+	};
+	struct InformationAboutShopUnit :public  InformationAboutNextUnit {
+
+		ShopKeeper* owner;
+		std::map<Item*, int>itemsAndItsCount;
+		~InformationAboutShopUnit()
+		{
+			for (std::map<Item*, int>::iterator it = itemsAndItsCount.begin(); it != itemsAndItsCount.end(); ++it)
+			{
+				delete it->first;
+			}
+			delete owner;
+		}
 	};
 	struct InformationAboutFightUnit : public InformationAboutNextUnit {
 
@@ -29,28 +56,6 @@ namespace Game {
 		}
 
 	};
-	struct InformationAboutShopUnit :public  InformationAboutNextUnit {
-			
-		ShopKeeper* owner;
-		std::map<Item*, int>itemsAndItsCount;
-		~InformationAboutShopUnit()
-		{
-			for (std::map<Item*, int>::iterator it = itemsAndItsCount.begin(); it != itemsAndItsCount.end(); ++it)
-			{
-				delete it->first;
-			}
-		}
-	};
-	struct InformationAboutReadableUnit :public InformationAboutNextUnit {
-
-		std::map<Item*, int>itemsAndItsCount;
-		~InformationAboutReadableUnit()
-		{
-			for (std::map<Item*, int>::iterator it = itemsAndItsCount.begin(); it != itemsAndItsCount.end(); ++it)
-			{
-				delete it->first;
-			}
-		}
-	};
+	
 }
 #endif // !INFORMATIONABOUTNEXUNIT_H

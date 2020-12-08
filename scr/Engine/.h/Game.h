@@ -14,6 +14,7 @@ namespace Game {
 		Game(const Game*other);
 		void runGame(PlayerCharacter*Initializer_global_player);
 		void addUnit(GameUnit* added);
+		void print();
 		~Game();
 	private:
 		int gameSize;
