@@ -34,30 +34,12 @@ namespace Game {
 		if (foundItems.size() != 0) {
 			playerChoiceItems();
 		}
-		//int whereNext = playerChoiceFromWhereAbleToNext();
-		//player->setWherenext(whereNext);
 	}
 
 	PlayerCharacter* ReadableUnit::playerExit()
 	{
 		return player;
 	}
-
-	/*void ReadableUnit::readTheSection()
-	{
-		std::string line = "";
-		std::ifstream in;
-		in.open(path);
-		if (in.is_open()) {
-			do
-			{
-				std::getline(in, line);
-				std::cout << line << std::endl;
-			} while (!in.eof());
-			in.close();
-		}
-
-	}*/
 
 	Item * ReadableUnit::getAnItemFromFoundItems(int index)
 	{

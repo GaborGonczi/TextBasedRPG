@@ -1,16 +1,5 @@
 #pragma once
 #include <string>
-/*struct InformationForSubPhraser
-{
-public:
-	std::string command;
-	int commandSize;
-	char startToken;
-	char endToken;
-	int startIndex;
-	int obligatoryEndIndex;
-	std::string* ret;
-};*/
 namespace Game {
 	class InformationForSubPhraser
 	{

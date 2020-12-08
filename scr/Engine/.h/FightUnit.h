@@ -36,52 +36,15 @@ namespace Game {
 		PlayerCharacter*player;
 		int width;
 		int height;
-		//int enemiesdb;
 		Table* anotherTable;
 		std::vector<Enemy*>enemies;
 
 		/*Functions*/
-
-		//void readTheSection();
 		/*Overrided Functions*/
 		int getWhichUnit();
 		bool someEnemyIsAlive();
 		/*Printer functions*/
 		void printCharactersState();
-
-
-		/*Initializer functions*/
-		//void initializeCharactersBeforeFight();
-		/*Command executer*/
-		//void commandExecuter();
-		/*Possibble actions for players*/
-		//void nextATK(Coordinate atkCoordinate);
-		//void nextSTP(Coordinate previous,Coordinate target);
-		//bool isValidTargetforThisActionTypeForPlayer(ActionType actionType, Coordinate choicedCoordinate);
-		//bool isTheFoundTarget(Coordinate targetCoordinate,int target);
-		/*Fight loop controller*/
-		//bool someEnemyIsAlive();
-		/*Enemies Action controller*/
-		//void enemiesAttack();
-		//void oneEnemyNextAction(ActionType actionType, Enemy*e);
-		//void enemyNextATK(Enemy*e, Coordinate atkcoordinate);
-		//void enemyNextSTP(Enemy*e, Coordinate previous, Coordinate target);
-		//bool isValidTargetforThisActionTypeForEnemy(ActionType actionType, Coordinate choicedCoordnate);
-		/*Some other functions which help the class*/
-		//Coordinate normalizeCoordinate(Coordinate actual, Coordinate previous);
-
-		/*Deprecated functions*/
-		//void initializeEnemiesPosition();
-		//void initializePlayerPosition();
-		//void print_one_line(int height, int width, int vhichline);
-		//void printTable();
-		//void enemyNextATK(Enemy*e, int firstCoordinate, int secondCoordinate);
-		//void enemyNextSTP(Enemy*e, int previous_firstCoordinate, int previous_secondCoordinate, int firstCoordinate, int secondCoordinate);
-		//void nextSTP(int previous_firstCoordinate, int previous_secondCoordinate, int firstCoordinate, int secondCoordinate);
-		//void nextATK(int firstCoordinate, int secondCoordinate);
-		//void normalizeCoordinate(int i, int j, int k, int l, int&firstCoordinate, int&secondCoordinate);
-		//bool isValidTargetforThisActionTypeForPlayer(ActionType actionType, int firstCoordinate, int secondCoordinate);
-		//bool isValidTargetforThisActionTypeForEnemy(ActionType actionType, int firstCoordinate, int secondCoordinate);
 	};
 }
 #endif // !FIGHT_UNIT_H

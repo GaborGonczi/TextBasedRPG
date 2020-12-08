@@ -26,8 +26,6 @@ namespace Game {
 	private:
 		PlayerCharacter*player;
 		std::vector<Item*>foundItems;
-		/*Functions*/
-		//void readTheSection();
 		/*Getters*/
 		Item* getAnItemFromFoundItems(int index);
 		/*Overrided Functions*/

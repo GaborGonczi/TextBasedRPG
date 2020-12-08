@@ -23,8 +23,6 @@ namespace Game {
 		PlayerCharacter*player;
 		ShopKeeper* owner;
 		std::vector<Item*>items;
-		/*Functions*/
-		//void readTheSection();
 		/*Getters*/
 		Item*getAnItemFromShop(int index);
 		/*Overrided Functions*/
