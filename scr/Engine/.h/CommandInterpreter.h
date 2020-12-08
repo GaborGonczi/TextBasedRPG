@@ -19,7 +19,6 @@ namespace Game {
 		DataStructure*getData();
 		~CommandInterpreter();
 	private:
-		//InformationForSubPhraser info;
 		int sizeWhereCommandIsRun;
 		DataStructure*data;
 		int commandSize(std::string command);
