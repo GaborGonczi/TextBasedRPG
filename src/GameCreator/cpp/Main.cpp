@@ -5,7 +5,7 @@
 #include "FileHandler.h"
 #include <cassert>
 #include <cstdlib>
-#include<GLFW/glfw3.h>
+//#include<GLFW/glfw3.h>
 
 void createfile(std::string location,std::string name, std::string extension) {
 
