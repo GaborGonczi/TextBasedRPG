@@ -1,11 +1,14 @@
 #include "FileHandler.h"
-FileHandler::FileHandler(std::string fname):fname(fname)
+FileHandler::FileHandler(std::string unitsPath, std::string storyPath):unitsPath(unitsPath),storyPath(storyPath)
 {
+	normalizePath(this->unitsPath);
+	normalizePath(this->storyPath);
+	this->storyPath += '\\';
 }
 
 void  FileHandler::readCSV() {
 	std::ifstream in;	
-	in.open(fname);		
+	in.open(unitsPath);		
 	std::vector<std::string>returnValue;
 	do					
 	{					
@@ -73,7 +76,9 @@ std::vector<int> FileHandler::stoiForVector(std::vector<std::string> data)
 	std::vector<int>returnValue;
 	for (int i = 0; i < data.size(); i++)
 	{
-		returnValue.push_back(std::stoi(data[i]));
+		if (data[i] != "-") {
+			returnValue.push_back(std::stoi(data[i]));
+		}
 	}
 	return returnValue;
 }
@@ -128,6 +133,24 @@ std::map<Game::Enemy*, int> FileHandler::createEnemyMap(std::vector<std::string>
 	return returnValue;
 }
 
+void FileHandler::normalizePath(std::string& path)
+{
+	std::string returnValue = "";
+	for (int i = 0; i < path.length(); i++)
+	{
+		if (path[i] == '\\') {
+			returnValue += '\\';
+			returnValue += '\\';
+		}
+		else
+		{
+			returnValue += path[i];
+		}
+
+	}
+	path = returnValue;
+}
+
 Game::InformationAboutNextUnit * FileHandler::createMember(std::vector<std::string> data)
 {
 	Game::InformationAboutNextUnit* UniversalMembers=nullptr;
@@ -155,7 +178,8 @@ Game::InformationAboutNextUnit * FileHandler::createMember(std::vector<std::stri
 
 Game::InformationAboutNextUnit * FileHandler::createUniversalMember(std::vector<std::string> data,Game::InformationAboutNextUnit * UniversalMembers)
 {
-	UniversalMembers->path = data[findField("PATH")];
+	
+	UniversalMembers->path =storyPath+data[findField("PATH")];
 	UniversalMembers->whichUnit = std::stoi(data[findField("WHICH_UNIT")]);
 	std::vector<std::string>WATNS = cutVector(data, findField("STARTWHEREABLETONEXTTOKEN"), findField("ENDWHEREABLETONEXTTOKEN"));
 	std::vector<int>WATN = stoiForVector(WATNS);
