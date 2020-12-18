@@ -59,6 +59,10 @@ namespace Game {
 			} while (!in.eof());
 			in.close();
 		}
+		else
+		{
+			std::cout << "Fajl error\n";
+		}
 	}
 }
 

@@ -20,6 +20,7 @@ public:
 	void create();
 	std::vector<Game::InformationAboutNextUnit*> getInfo();
 	~FileHandler();
+	Game::InformationAboutNextUnit * createMember(std::vector<std::string> data);
 	
 private:
 	std::string unitsPath;
@@ -30,18 +31,21 @@ private:
 	std::vector<Game::InformationAboutNextUnit*> info;
 	std::vector<std::string> strtok(std::string line, char delimiter);
 
-	Game::InformationAboutNextUnit * createMember(std::vector<std::string> data);
+	//Game::InformationAboutNextUnit * createMember(std::vector<std::string> data);
+	
+	int findField(std::string searched, int offset = 0);
+	std::vector<int> positionsInPattern(std::string searched);
+	std::vector<std::string>cutVector(std::vector<std::string>data, int begin, int end);
+
+	void normalizePath(std::string & path);
 	Game::InformationAboutNextUnit* createUniversalMember(std::vector<std::string> data, Game::InformationAboutNextUnit*UniversalMembers);
 	Game::InformationAboutNextUnit *createSpecializedMember(std::vector<std::string>data, Game::InformationAboutReadableUnit*SpecialMembers);
 	Game::InformationAboutNextUnit *createSpecializedMember(std::vector<std::string>data, Game::InformationAboutShopUnit*SpecialMembers);
 	Game::InformationAboutNextUnit *createSpecializedMember(std::vector<std::string>data, Game::InformationAboutFightUnit*SpecialMembers);
-	int findField(std::string searched);
-	std::vector<int> positionsInPattern(std::string searched);
-	std::vector<std::string>cutVector(std::vector<std::string>data, int begin, int end);
+
 	std::vector<int>stoiForVector(std::vector<std::string> data);
 	std::map<Game::Item*, int>createItemMap(std::vector<std::string>items);
 	std::map<Game::Enemy*, int>createEnemyMap(std::vector<std::string>enemies);
-	void normalizePath(std::string & path);
 	
 
 };

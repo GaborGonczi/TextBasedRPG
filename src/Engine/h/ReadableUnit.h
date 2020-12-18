@@ -22,6 +22,7 @@ namespace Game {
 		void playerEntry(PlayerCharacter*p);
 		void localGame();
 		PlayerCharacter* playerExit();
+		void print();
 
 	private:
 		PlayerCharacter*player;
@@ -32,7 +33,7 @@ namespace Game {
 		int getWhichUnit();
 		/*Initializer Functions*/
 		/*Printer Functions*/
-		void print();
+		
 		void printFoundItems();
 		/*State modifier Functions*/
 		void playerChoiceItems();

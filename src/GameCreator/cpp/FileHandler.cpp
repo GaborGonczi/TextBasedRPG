@@ -4,6 +4,13 @@ FileHandler::FileHandler(std::string unitsPath, std::string storyPath):unitsPath
 	normalizePath(this->unitsPath);
 	normalizePath(this->storyPath);
 	this->storyPath += '\\';
+	pattern = { "STARTUNITTOKEN","TYPE","WHICH_UNIT","PATH","STARTWHEREABLETONEXTTOKEN","WATN1","WATN2","WATN3","WATN4","WATN5","ENDWHEREABLETONEXTTOKEN",
+		"STARTITEMSTOKEN","STARTITEMTOKEN","NAME","SELLPRICE","BUYPRICE","TEXT","ITEMCOUNT","ENDITEMTOKEN","ENDITEMSTOKEN",
+		"STARTSHOPKEEPERTOKEN","NAME","MONEY","STARTSKARMORTOKEN","NAME","RADIUSOFSTEPBUFF","DEFBUFF","ENDSKARMORTOKEN","STARTSKWEAPONTOKEN","NAME","RADIUSOFACTIONBUFF","ATKBUFF","ENDSKWEAPONTOKEN",
+		"HP","ATK","DEF","INWHICHUNIT","STARTSENTENCESTOKEN","SC1","SC2","SC3","ENDSENTENCESTOKEN","STARTSENTENCESCOUNTTOKEN","CNT","ENDSENTENCESCOUNTTOKEN","ENDSHOPKEEPERTOKEN",
+		"STARTENEMIESTOKEN","STARTENEMYTOKEN","NAME","HP","ATK","DEF","MONEY","STARTARMORTOKEN","NAME","RADIUSOFSTEPBUFF","DEFBUFF","ENDARMORTOKEN","STARTWEAPONTOKEN","NAME","RADIUSOFACTIONBUFF","ATKBUFF","ENDWEAPONTOKEN",
+		"INWHICHUNIT","RADIUSOFACTION","RADIUSOFSTEP","ENEMYCOUNT","ENDENEMYTOKEN","ENDENEMIESTOKEN","TABLEHEIGHT","TABLEWIDTH","ENDUNITTOKEN"
+	};
 }
 
 void  FileHandler::readCSV() {
@@ -45,9 +52,9 @@ void FileHandler::tokenizedLines()
 	}
 }
 
-int FileHandler::findField(std::string searched)
+int FileHandler::findField(std::string searched, int offset)
 {
-	std::vector<std::string>::iterator i=pattern.begin();
+	std::vector<std::string>::iterator i=pattern.begin()+offset;
 	int position;
 
 	while (i != pattern.end())
@@ -122,8 +129,8 @@ std::map<Game::Enemy*, int> FileHandler::createEnemyMap(std::vector<std::string>
 	for (int i = 0; i < StartEnemyPos.size(); i++)
 	{
 		enemy = cutVector(data, StartEnemyPos[i], EndEnemyPos[i]);
-		armor = cutVector(enemy, 5, 9);
-		weapon = cutVector(enemy, 10, 14);
+		armor = cutVector(enemy, findField("STARTARMORTOKEN", StartEnemyPos[i]) - StartEnemyPos[i] - 1, findField("ENDARMORTOKEN", StartEnemyPos[i]) - StartEnemyPos[i] - 1);
+		weapon = cutVector(enemy, findField("STARTWEAPONTOKEN", StartEnemyPos[i]) - StartEnemyPos[i] - 1, findField("ENDWEAPONTOKEN", StartEnemyPos[i]) - StartEnemyPos[i] - 1);
 		Game::Armor*a = new Game::Armor(armor[0], std::stoi(armor[1]), std::stoi(armor[2]));
 		Game::Weapon*w = new Game::Weapon(weapon[0], std::stoi(weapon[1]), std::stoi(weapon[2]));
 		enemyObject = new Game::Enemy(enemy[0], std::stoi(enemy[1]), std::stoi(enemy[2]), std::stoi(enemy[3]), std::stoi(enemy[4]), a, w, std::stoi(enemy[15]), -1, -1, -1, std::stoi(enemy[16]), std::stoi(enemy[17]));
@@ -197,8 +204,8 @@ Game::InformationAboutNextUnit * FileHandler::createSpecializedMember(std::vecto
 {
 	SpecialMembers->itemsAndItsCount = createItemMap(data);
 	std::vector<std::string>sk = cutVector(data, findField("STARTSHOPKEEPERTOKEN"), findField("ENDSHOPKEEPERTOKEN"));
-	std::vector<std::string>armor = cutVector(data, findField("STARTSKARMORTOKEN"), findField("ENDSKARMORTOKEN"));
-	std::vector<std::string>weapon = cutVector(data, findField("STARTSKWEAPONTOKEN"), findField("ENDSKWEAPONTOKEN"));
+	std::vector<std::string>armor = cutVector(sk, findField("STARTSKARMORTOKEN", findField("STARTSHOPKEEPERTOKEN"))- findField("STARTSHOPKEEPERTOKEN")-1, findField("ENDSKARMORTOKEN", findField("STARTSHOPKEEPERTOKEN"))- findField("STARTSHOPKEEPERTOKEN")-1);
+	std::vector<std::string>weapon = cutVector(sk, findField("STARTSKWEAPONTOKEN", findField("STARTSHOPKEEPERTOKEN")) - findField("STARTSHOPKEEPERTOKEN") - 1, findField("ENDSKWEAPONTOKEN", findField("STARTSHOPKEEPERTOKEN")) - findField("STARTSHOPKEEPERTOKEN") - 1);
 	Game::Armor*a = new Game::Armor(armor[0], std::stoi(armor[1]), std::stoi(armor[2]));
 	Game::Weapon*w = new Game::Weapon(weapon[0], std::stoi(weapon[1]), std::stoi(weapon[2]));
 	Game::ShopKeeper*SK = new Game::ShopKeeper(sk[0], std::stoi(sk[1]), a, w, std::stoi(sk[12]), std::stoi(sk[13]), std::stoi(sk[14]), std::stoi(sk[15]));
