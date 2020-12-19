@@ -1,7 +1,7 @@
 #pragma once
 #include "ActionType.h"
 namespace Game {
-	class DataStructure
+	class  DataStructure
 	{
 	public:
 		DataStructure();

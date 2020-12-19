@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <time.h>
 #include <iomanip>
-#include <map>;
+#include <map>
 //#include<fstream>
 #include "GameUnit.h"
 #include "PlayerCharacter.h"
@@ -14,7 +14,7 @@
 #include "Table.h"
 #include "Coordinate.h"
 namespace Game {
-	class FightUnit :public GameUnit
+	class  FightUnit :public GameUnit
 	{
 	public:
 		/*Constructors*/

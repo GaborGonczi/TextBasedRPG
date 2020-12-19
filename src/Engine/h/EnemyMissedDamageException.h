@@ -2,7 +2,7 @@
 #define ENEMY_MISSED_DAMAGE_EXCEPTION
 #include <exception>
 namespace Game {
-	class EnemyMissedDamageException :public std::exception
+	class  EnemyMissedDamageException :public std::exception
 	{
 	public:
 		/*Constructor*/
