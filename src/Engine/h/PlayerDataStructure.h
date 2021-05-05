@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYER_DATA_STRUCTURE_H
+#define PLAYER_DATA_STRUCTURE_H
 #include "DataStructure.h"
 #include "PlayerCharacter.h"
 namespace Game {
@@ -17,3 +18,6 @@ namespace Game {
 		PlayerCharacter*playerCharacter;
 	};
 }
+#endif // !PLAYER_DATA_STRUCTURE_H
+
+

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 #include <vector>
 #include "PlayerCharacter.h"
 #include "GameUnit.h"
@@ -26,3 +27,6 @@ namespace Game {
 
 	};
 }
+#endif // !GAME_H
+
+

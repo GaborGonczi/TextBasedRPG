@@ -1,5 +1,5 @@
-#ifndef PLAYER_CANNNOT_STEP_HERE_EXCEPTION
-#define PLAYER_CANNNOT_STEP_HERE_EXCEPTION
+#ifndef PLAYER_CANNNOT_STEP_HERE_EXCEPTION_H
+#define PLAYER_CANNNOT_STEP_HERE_EXCEPTION_H
 #include <exception>
 namespace Game {
 	class PlayerCannotStepHereException :public std::exception
@@ -15,4 +15,4 @@ namespace Game {
 		const char*msg;
 	};
 }
-#endif // !PLAYER_CANNNOT_STEP_HERE_EXCEPTION
+#endif // !PLAYER_CANNNOT_STEP_HERE_EXCEPTION_H

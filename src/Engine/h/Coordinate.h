@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COORDINATE_H
+#define COORDINATE_H
 namespace Game {
 	class Coordinate
 	{
@@ -18,3 +19,6 @@ namespace Game {
 		int valueY;
 	};
 }
+#endif // !COORDINATE_H
+
+

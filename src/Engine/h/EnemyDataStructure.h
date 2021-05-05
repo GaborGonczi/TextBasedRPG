@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENEMY_DATA_STRUCTURE_H
+#define ENEMY_DATA_STRUCTURE_H
 #include "DataStructure.h"
 #include "Enemy.h"
 namespace Game {
@@ -17,4 +18,7 @@ namespace Game {
 		Enemy*enemyCharacter;
 	};
 }
+#endif // !ENEMY_DATA_STRUCTURE_H
+
+
 

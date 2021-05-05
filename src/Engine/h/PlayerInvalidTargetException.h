@@ -1,5 +1,5 @@
-#ifndef PLAYER_INVALID_TARGET_EXCEPTION
-#define PLAYER_INVALID_TARGET_EXCEPTION
+#ifndef PLAYER_INVALID_TARGET_EXCEPTION_H
+#define PLAYER_INVALID_TARGET_EXCEPTION_H
 #include <exception>
 namespace Game {
 	class PlayerInvalidTargetException :public std::exception
@@ -15,4 +15,4 @@ namespace Game {
 		const char*msg;
 	};
 }
-#endif // !PLAYER_INVALID_TARGET_EXCEPTION
+#endif // !PLAYER_INVALID_TARGET_EXCEPTION_H

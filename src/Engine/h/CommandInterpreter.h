@@ -1,8 +1,9 @@
-#pragma once
+#ifndef COMMAND_INTERPRETER_H
+#define COMMAND_INTERPRETER_H
 #include <iostream>
 #include <string>
 #include "ActionType.h"
-#include "InformationForSubPhraser.h"
+#include "InformationForSubParser.h"
 #include "DataStructure.h"
 #include "PlayerDataStructure.h"
 #include "EnemyDataStructure.h"
@@ -25,8 +26,8 @@ namespace Game {
 		bool isGoodCharacter(char tokenCharacter);
 		bool isCommandShort(std::string command, int minvalue);
 		bool tokenChecker(std::string tokenString);
-		std::string * Phraser(std::string command);
-		InformationForSubPhraser & subPhraser(InformationForSubPhraser & info);
+		std::string * Parser(std::string command);
+		InformationForSubParser & subParser(InformationForSubParser & info);
 		bool argumentChecker(std::string * arguments, int size);
 		ActionType commandTypeForEnemy(std::string type);
 		ActionType commandTypeForPlayer(std::string type);
@@ -35,3 +36,5 @@ namespace Game {
 
 	};
 }
+#endif // !COMMAND_INTERPRETER_H
+

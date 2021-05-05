@@ -49,7 +49,7 @@ namespace Game {
 		else
 		{
 
-			ret = Phraser(command);
+			ret = Parser(command);
 			if (ret[0] == "P") {
 				type = commandTypeForPlayer(ret[1]);
 			}
@@ -98,10 +98,10 @@ namespace Game {
 		return commandSize(command) < minvalue;
 	}
 	bool CommandInterpreter::tokenChecker(std::string tokenString) {
-		return !(tokenString.find(']', 0) != -1 || tokenString.find('[', 0) != -1 || tokenString.find('<', 0) != -1 || tokenString.find('>', 0) != -1);
+		return !(tokenString.find(']', 0) != -1 || tokenString.find('[', 0) != -1 || tokenString.find('<', 0) != -1 || tokenString.find('>', 0) != -1);// find_first_off-ra cserélni
 	}
-	std::string* CommandInterpreter::Phraser(std::string command) {
-		InformationForSubPhraser info;
+	std::string* CommandInterpreter::Parser(std::string command) {
+		InformationForSubParser info;
 		info.setObligatoryEndIndex(0);
 		info.setCommand(command);
 		info.setStartIndex(0);
@@ -111,11 +111,11 @@ namespace Game {
 		info.setRet(new std::string[info.getCommandSize()]);
 		int commandLength = command.length();
 		int	k = command.find_last_of(']', commandLength);
-		info = subPhraser(info);
+		info = subParser(info);
 		info.setStartIndex(k);
 		info.setStartToken('<');
 		info.setEndToken('>');
-		info = subPhraser(info);
+		info = subParser(info);
 		std::string* ret = info.getACopyOfret();
 		for (int i = 0; i < commandSize(command); i++) {
 			if (!tokenChecker(ret[i])) {
@@ -126,7 +126,7 @@ namespace Game {
 		return ret;
 
 	}
-	InformationForSubPhraser& CommandInterpreter::subPhraser(InformationForSubPhraser& info) {
+	InformationForSubParser& CommandInterpreter::subParser(InformationForSubParser& info) {
 		int db = info.getObligatoryEndIndex();;
 		std::string command = info.getCommand();;
 		int i = command.find(info.getStartToken(), info.getStartIndex());

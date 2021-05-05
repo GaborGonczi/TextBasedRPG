@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DATA_STRUCTURE_H
+#define DATA_STRUCTURE_H
 #include "ActionType.h"
 namespace Game {
 	class  DataStructure
@@ -19,3 +20,6 @@ namespace Game {
 
 	};
 }
+#endif // !DATA_STRUCTURE_H
+
+
